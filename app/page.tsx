@@ -12,9 +12,9 @@ export default function Home() {
 		<>
 			<DeskLanding />
 			<BlogSection1 />
-			<PoliticsDesk />
+			{/* <PoliticsDesk /> */}
 			<SecurityDesk />
-			<EconomyDesk />
+			{/* <EconomyDesk /> */}
 			<HistoryDesk />
 		</>
 	);
