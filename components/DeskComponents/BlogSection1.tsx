@@ -35,8 +35,8 @@ const BlogSection1 = () => {
 						>
 							Diversification Triumph:
 							Northern Nigeria Shifts Gears
-							Beyond OiCelebrating Unity in
-							Northern Nigeria
+							Celebrating Unity in Northern
+							Nigeria
 						</a>
 						<p className='headeMenus hidden md:flex mb-2 text-gray-700'>
 							Leaders across party lines come
@@ -206,7 +206,7 @@ const BlogSection1 = () => {
 							className='blogTitleM md:blogTitleD inline-block mb-3 text-2xl hover:opacity-80 md:hover:text-yellow-400 font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700'
 						>
 							Legacy of Empires: Northern
-							Nigeria's Rich Historical
+							Nigeria&apos;s Rich Historical
 							Heritage Revealed
 						</a>
 						<p className='headeMenus hidden md:flex mb-2 text-gray-700'>

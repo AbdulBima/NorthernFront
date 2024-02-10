@@ -7,8 +7,8 @@ const BlogMobile = () => {
 		<>
 			<div className='md:hidden flex flex-col items-start ml-8 bg-white pb-28'>
 				<p className='  bg-white   text-2xl w-[70vw] font-semibold text-black mt-16 mobileLandingTitle '>
-					Dynamics of Northern Nigeria's Political
-					Landscape
+					Dynamics of Northern Nigeria&apos;s
+					Political Landscape
 				</p>
 				<div className="relative h-[40vh] flex  w-[85vw] mt-6 items-center bg-[url('/images/elrufai.jpg')] bg-cover bg-center md:bg-center bg-no-repeat">
 					<div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent  '></div>

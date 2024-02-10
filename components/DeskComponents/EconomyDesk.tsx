@@ -37,8 +37,8 @@ const EconomyDesk = () => {
 									<h1 className='blogTitleD hover:opacity-90 transition max-w-lg mt-4 text-2xl font-semibold leading-tight text-gray-800'>
 										Agricultural
 										Triumphs: Northern
-										Nigeria's Fields
-										Yield Record
+										Nigeria&apos;s
+										Fields Yield Record
 										Harvests
 									</h1>
 								</a>

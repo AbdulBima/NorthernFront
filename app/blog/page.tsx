@@ -13,8 +13,8 @@ const Blog = () => {
 					Leadership
 				</p>
 				<p className=' absolute bg-white pt-10  pb-5 text-5xl w-[70vw] transform -translate-x-1/2 left-1/2 font-bold px-40 text-black text-center -bottom-8 blogPageTitle '>
-					Dynamics of Northern Nigeria's Political
-					Landscape
+					Dynamics of Northern Nigeria&apos;s
+					Political Landscape
 				</p>
 			</div>
 
