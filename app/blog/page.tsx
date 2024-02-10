@@ -17,6 +17,7 @@ const Blog = () => {
 					Political Landscape
 				</p>
 			</div>
+
 			<div className='hidden md:flex'>
 				<article
 					className=' px-4 py-24 mx-auto max-w-7xl'

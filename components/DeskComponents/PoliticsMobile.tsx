@@ -12,7 +12,7 @@ const PoliticsMobile = () => {
 				<span className='h-px w-[60vw] ml-4 mr-4 bg-black'></span>
 			</span>
 			<div className='w-[100vw] overflow-x-hidden'>
-				<div className='carousel carousel-center  space-x-4 bg-neutral '>
+				<div className='carousel carousel-center max-w-md p-4 space-x-4 bg-neutral '>
 					<div className='carousel-item w-[70vw]'>
 						<Article
 							imageUrl='/images/kwankwaso.jpg'
