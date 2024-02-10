@@ -200,7 +200,7 @@ const Blog = () => {
 					</div>
 				</article>{" "}
 			</div>
-			// <BlogMobile />
+			{/*<BlogMobile /> */}
 		</>
 	);
 };
