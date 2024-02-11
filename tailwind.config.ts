@@ -18,6 +18,6 @@ const config: Config = {
   daisyui: {
     themes: [],
   },
-  plugins: [require("daisyui"),],
+  plugins: [require("daisyui"), require('tailwind-forms')],
 };
 export default config;

@@ -1,11 +1,149 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ZodType, z } from "zod";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+type FormData = {
+	email: string;
+};
+
+// Extracting the form validation schema to a separate function
+const getValidationSchema = (): ZodType<FormData> =>
+	z.object({
+		email: z.string().email(),
+	});
+
+// Extracting the form component to a separate function
+const EmailForm = ({
+	register,
+	handleSubmit,
+	errors,
+	handleEmailChange,
+	email,
+	isLoading,
+}: {
+	register: any;
+	handleSubmit: any;
+	errors: any;
+	handleEmailChange: (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => void;
+	email: string;
+	isLoading: boolean;
+}) => (
+	<form onSubmit={handleSubmit}>
+		<input
+			placeholder='Email'
+			{...register("email")}
+			value={email}
+			onChange={handleEmailChange}
+			required
+			type='text'
+			className='flex-grow w-full mt-4 md:w-[20vw] h-12 px-4 mb-3 rounded-none transition duration-200 bg-white border border-gray-300 shadow-sm appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline'
+		/>
+		{errors.email && (
+			<span className='text-red-600'>
+				{errors.email.message}
+			</span>
+		)}
+		{isLoading ? (
+			<div className='flex mt-6 justify-center items-center'>
+				<div className='btld mt-10'>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		) : (
+			<button
+				type='submit'
+				className='w-full md:w-[10vw] text-center bg-orange-500 px-2 py-2 text-black mt-2 md:mt-0'
+			>
+				Sign up
+			</button>
+		)}
+	</form>
+);
+
+// Extracting the API call logic to a separate function
+const sendToDBS = async (email: string) => {
+	try {
+		const response = await axios.post(
+			"https://backendv2-smz4.onrender.com/api/reader",
+			{
+				email: email,
+			}
+		);
+
+		return response;
+	} catch (error) {
+		console.error("Error:", error);
+		throw error;
+	}
+};
 
 const DeskFooter = () => {
+	const [email, setEmail] = useState<string>("");
+	const [isLoading, setIsLoading] =
+		useState<boolean>(false);
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormData>({
+		resolver: zodResolver(getValidationSchema()),
+	});
+
+	const handleEmailChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		setEmail(e.target.value);
+	};
+
+	const onSubmit = async (data: FormData) => {
+		setIsLoading(true);
+
+		try {
+			await sendToDBS(email);
+
+			setEmail("");
+
+			toast.success("Thanks for subscribing", {
+				position: "bottom-right",
+				autoClose: 2000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "dark",
+			});
+		} catch (error) {
+			toast.error(
+				"Error! Random number is less than or equal to 0.5."
+			);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
 	return (
 		<div className='bg-black border-t border-white border-opacity-50'>
 			<div className='px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
-				<div className='grid row-gap-10 mb-8 lg:grid-cols-6'>
-					<div className='grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4'>
+				<div className='md:flex md:space-x-10 md:justify-between pb-20 pt-6 flex flex-col md:flex-row'>
+					<div className='md:flex flex flex-row space-x-16 md:flex-row md:space-x-20'>
 						<div>
 							<p className='blogTitleD font-medium tracking-wide text-white'>
 								Pages
@@ -21,7 +159,7 @@ const DeskFooter = () => {
 								</li>
 								<li>
 									<a
-										href='/'
+										href='/about'
 										className='text-gray-500 headeMenus hover:text-yellow-400 transition-colors duration-300 '
 									>
 										About
@@ -29,7 +167,7 @@ const DeskFooter = () => {
 								</li>
 								<li>
 									<a
-										href='/'
+										href='/contact'
 										className='text-gray-500 headeMenus hover:text-yellow-400 transition-colors duration-300 '
 									>
 										Contact Us
@@ -37,7 +175,7 @@ const DeskFooter = () => {
 								</li>
 								<li>
 									<a
-										href='/'
+										href='/privacy'
 										className='text-gray-500 headeMenus hover:text-yellow-400 transition-colors duration-300 '
 									>
 										Privacy Policy
@@ -93,26 +231,25 @@ const DeskFooter = () => {
 							</ul>
 						</div>
 					</div>
-					<div className='md:max-w-md lg:col-span-2 mt-20 '>
+					<div className='md:max-w-full  md:mt-0 mt-20 '>
 						<span className='blogTitleD  font-medium tracking-wide text-white'>
 							Subscribe to our newsletter
 						</span>
-						<form className='flex flex-col mt-4 md:flex-row'>
-							<input
-								placeholder='Email'
-								required
-								type='text'
-								className='flex-grow w-full h-12 px-4 mb-3 rounded-none transition duration-200 bg-white border border-gray-300  shadow-sm appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline'
-							/>
-							<button
-								type='submit'
-								className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200  shadow-md bg-yellow-500 hover:bg-orange-500 focus:shadow-outline focus:outline-none'
-							>
-								Subscribe
-							</button>
-						</form>
+						<EmailForm
+							register={register}
+							handleSubmit={handleSubmit(
+								onSubmit
+							)}
+							errors={errors}
+							handleEmailChange={
+								handleEmailChange
+							}
+							email={email}
+							isLoading={isLoading}
+						/>
 					</div>
 				</div>
+
 				<div className='flex flex-col justify-between pt-5 pb-10 border-t mt-10 md:mt-0 border-white border-opacity-30 sm:flex-row'>
 					<p className='headeMenus text-gray-500'>
 						© Copyright NorthernFront Inc. 2024
@@ -163,6 +300,18 @@ const DeskFooter = () => {
 					</div>
 				</div>
 			</div>
+
+			<ToastContainer
+				position='bottom-right'
+				autoClose={3000} // Close toast automatically after 3 seconds
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 		</div>
 	);
 };

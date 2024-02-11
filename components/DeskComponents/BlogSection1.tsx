@@ -141,7 +141,7 @@ const BlogSection1 = () => {
 			</div>
 
 			<div className='grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full mt-0 md:mt-10'>
-				<div className='overflow-hidden hidden md:flex mt-10 md:mt-10 transition-shadow duration-300 bg-white rounded shadow-sm'>
+				<div className='overflow-hidden md:mt-6  transition-shadow duration-300 bg-white rounded shadow-sm'>
 					<div className=" w-full hover:opacity-80 bg-[url('/images/n7.jpg')] bg-cover bg-center h-60"></div>
 					<div className='p-5 border border-t-0'>
 						<p className='mb-3 text-xs font-semibold tracking-wide uppercase'>
@@ -183,7 +183,7 @@ const BlogSection1 = () => {
 						</a>
 					</div>
 				</div>
-				<div className=' hidden md:flex overflow-hidden mt-2 transition-shadow duration-300 bg-white rounded shadow-sm'>
+				<div className=' hidden md:grid overflow-hidden md:mt-6  transition-shadow duration-300 bg-white rounded shadow-sm'>
 					<div className=" w-full hover:opacity-80 bg-[url('/images/n9.jpg')] bg-cover bg-center h-60"></div>
 					<div className='p-5 border border-t-0'>
 						<p className='mb-3 text-xs font-semibold tracking-wide uppercase'>
@@ -225,7 +225,7 @@ const BlogSection1 = () => {
 						</a>
 					</div>
 				</div>
-				<div className='overflow-hidden mt-10 md:mt-12 transition-shadow duration-300 bg-white rounded shadow-sm'>
+				<div className='overflow-hidden md:mt-6  transition-shadow duration-300 bg-white rounded shadow-sm'>
 					<div className=" w-full hover:opacity-80 bg-[url('/images/n1.jpg')] bg-cover bg-center h-60"></div>
 					<div className='p-5 border border-t-0'>
 						<p className='mb-3 text-xs font-semibold tracking-wide uppercase'>
